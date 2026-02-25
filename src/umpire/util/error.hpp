@@ -118,6 +118,8 @@ class resource_error : public umpire::runtime_error {
 #define UMPIRE_ERROR(type, msg) asm("trap;");
 #elif defined(__HIP_DEVICE_COMPILE__)
 #define UMPIRE_ERROR(type, msg) abort();
+#elif defined(__SYCL_DEVICE_ONLY__)
+#define UMPIRE_ERROR(type, msg) abort();
 #else
 #define UMPIRE_ERROR(type, msg)                                           \
   {                                                                       \
